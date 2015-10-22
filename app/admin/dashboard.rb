@@ -9,6 +9,19 @@ ActiveAdmin.register_page "Dashboard" do
         small I18n.t("active_admin.dashboard_welcome.call_to_action")
       end
     end
+    # h2 "Why is Arbre awesome?"
+
+    # ul do
+    #     li "The DOM is implemented in ruby"
+    #     li "You can create object oriented views"
+    #     li "Templates suck"
+    # end
+    panel "Chart", id: "my-panel" do
+        render partial: 'charts', locals: {
+          less: Book.where('price<20').count, 
+          more: Book.where('price>=20').count
+        }
+    end
 
     # Here is an example of a simple dashboard with columns and panels.
     #
